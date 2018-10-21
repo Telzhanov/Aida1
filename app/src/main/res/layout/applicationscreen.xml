@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginBottom="725dp"
+                android:background="@android:color/white"
+                android:elevation="8dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:gravity="center"
+                android:lineSpacingExtra="18sp"
+                android:text="Анкета"
+                android:textColor="#858585"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/appl_image"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/cb6cdbb52e7e5ca5b5b5ca13fa7f953d"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sickapplname"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Азат Махметов"
+                android:textSize="24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appl_image" />
+
+            <TextView
+                android:id="@+id/sickapplage"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="7 лет"
+                android:textSize="24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sickapplname" />
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="320dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sickapplname" />
+
+            <TextView
+                android:id="@+id/helped"
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="96dp"
+                android:layout_marginRight="255dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="Помогли"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar3" />
+
+            <TextView
+                android:id="@+id/collected"
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="96dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="Собрано"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar3" />
+
+            <TextView
+                android:id="@+id/target"
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="96dp"
+                android:layout_marginLeft="320dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="Цель"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar3" />
+
+            <TextView
+                android:id="@+id/helpednumber"
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="88dp"
+                android:layout_marginRight="255dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="256 человек"
+                android:textColor="@color/appl"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/helped" />
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="88dp"
+                android:layout_marginLeft="13dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="7680 $"
+                android:textColor="@color/appl"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/collected" />
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="88dp"
+                android:layout_marginLeft="296dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="12000 $"
+                android:textColor="@color/appl"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/target" />
+
+            <TextView
+                android:id="@+id/diagnosis"
+                android:layout_width="152dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="170dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="Клинический диагноз:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar3" />
+
+            <TextView
+                android:id="@+id/diagnosisname"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="120dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="Сердечная недостаточность"
+                android:textColor="@color/appl"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/diagnosis" />
+
+            <TextView
+                android:id="@+id/historyapplication"
+                android:layout_width="118dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="200dp"
+
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="История болезни"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.484"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/diagnosis" />
+
+            <TextView
+                android:id="@+id/historytext"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:fontFamily="@font/nunito_extralight"
+                android:text="С 5 лет страдает болями в животе,чаще на фоне нарушения диеты.0.8.0.9.2011 почувствовал тошноту, сопроваждающуюся  болями в животе,с периодической отрыжкой.В связи с вышеуказанными жалобами  20.09.2011 экстренно госпитализрован в детское отделение ЦКБ "
+                android:textColor="@color/appl"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@id/historyapplication"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/historyapplication" />
+
+            <TextView
+                android:id="@+id/contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginBottom="80dp"
+                android:layout_marginRight="260dp"
+                android:text="Контактное лицо"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/historytext"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/historytext" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/parentimage"
+                android:layout_width="80dp"
+                android:layout_height="44dp"
+                android:layout_marginRight="52dp"
+                android:src="@drawable/cb6cdbb52e7e5ca5b5b5ca13fa7f953d"
+                app:layout_constraintLeft_toLeftOf="@id/contacts"
+                app:layout_constraintRight_toRightOf="@id/contacts"
+                app:layout_constraintTop_toBottomOf="@id/contacts" />
+
+            <TextView
+                android:id="@+id/guardianparent"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="80dp"
+                android:text="Алия Маметова"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toLeftOf="@id/parentimage"
+                app:layout_constraintTop_toBottomOf="@id/contacts" />
+
+            <TextView
+                android:id="@+id/guardian"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="80dp"
+                android:text="Мама"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toLeftOf="@id/parentimage"
+                app:layout_constraintTop_toBottomOf="@id/guardianparent" />
+
+            <TextView
+                android:id="@+id/blog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="88dp"
+                android:text="Посмотреть блог"
+                android:textColor="#00E9A3"
+                android:onClick="LookClick"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/historytext" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_rectangle_2_copy"
+                android:fontFamily="@font/nunito_extralight"
+                android:gravity="center"
+                android:text="Помочь"
+                android:onClick="HelpOnClick"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/blog" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

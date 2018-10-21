@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "510964228981",
+    "firebase_url": "https://aida-3e5ff.firebaseio.com",
+    "project_id": "aida-3e5ff",
+    "storage_bucket": "aida-3e5ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510964228981:android:83fb0125d01881f3",
+        "android_client_info": {
+          "package_name": "beks.androidcourse.kz.aida"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510964228981-6k4lhcc1h938f8k590r46pvvkmee3c1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "beks.androidcourse.kz.aida",
+            "certificate_hash": "c43ef14f82c2443b0df3fde90d739e935f3919bd"
+          }
+        },
+        {
+          "client_id": "510964228981-38ssk7v6p10huvfil62vnpss29r84cul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhE4zz-3X4DsxvGVnsWPRoYLP7kTCP6o0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510964228981-38ssk7v6p10huvfil62vnpss29r84cul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

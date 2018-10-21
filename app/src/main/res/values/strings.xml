@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Aida</string>
+    <string name="first_scr">FirstScreen</string>
+    <string name="title_activity_appl_screen">ApplScreen</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_application_screen">ApplicationScreenActivity</string>
+    <string name="title_profile">Profile</string>
+    <string name="history">История</string>
+    <string name="title_activity_sicks_application">SicksApplication</string>
+</resources>
