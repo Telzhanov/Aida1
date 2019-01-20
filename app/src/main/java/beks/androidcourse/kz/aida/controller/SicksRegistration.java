@@ -11,9 +11,9 @@ public class SicksRegistration extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    public String newSick(){
-        Sicks sick = new Sicks("dad","dwd","fwff","fwfwf","wff","fwfa","eqeq","eweed","ewe");
-        return sick.getName();
-    }
+    /*public String newSick(){
+        //Sicks sick = new Sicks("dad","dwd","fwff","fwfwf","wff","fwfa","eqeq","eweed");
+        //return sick.getName();
+    }*/
 
 }

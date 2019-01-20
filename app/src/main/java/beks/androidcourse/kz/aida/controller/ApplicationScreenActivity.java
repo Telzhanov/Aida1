@@ -2,6 +2,7 @@ package beks.androidcourse.kz.aida.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -34,13 +35,12 @@ public class ApplicationScreenActivity extends AppCompatActivity implements Bott
         setContentView(R.layout.activity_application_screen);
         loadFragment(new HomeFragment());
         BottomNavigationView navigation = findViewById(R.id.navigation);
-        BottomNavigationViewHolder.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED);
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
-        TextView allAppl = findViewById(R.id.AllAplications);
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 fragment = new HomeFragment();
@@ -58,12 +58,10 @@ public class ApplicationScreenActivity extends AppCompatActivity implements Bott
                 fragment = new ProfileFragment();
                 break;
         }
-
         return loadFragment(fragment);
     }
 
     private boolean loadFragment(Fragment fragment) {
-        //switching fragment
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()

@@ -96,7 +96,6 @@ public class RegisterScreen extends AppCompatActivity implements View.OnClickLis
                             if (help.getCurrentTextColor() == getColor(R.color.green) && donor.getCurrentTextColor() == getColor(R.color.appl)){
                                 user.setCategory("help need");
                             }
-
                             database.getReference("User")
                                     .child(firebaseAuth.getCurrentUser().getUid())
                                         .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -105,16 +104,16 @@ public class RegisterScreen extends AppCompatActivity implements View.OnClickLis
 
                                 }
                             });
-                            finish();
                             if(firebaseAuth.getCurrentUser() != null){
-                                finish();
-                                if(user.getCategory().trim() == "help") {
-                                    startActivity(new Intent(getApplicationContext(), ApplicationScreenActivity.class));
+                                if(user.getCategory().equals("help need")) {
+                                    startActivity(new Intent(getApplicationContext(),ApplRegistraionActivity.class));
                                 }
-                                if(user.getCategory().trim() == "donor"){
-                                    startActivity(new Intent(getApplicationContext(),PaymentsClass.class));
+                                if(user.getCategory().equals("donor")){
+                                    startActivity(new Intent(getApplicationContext(),ApplicationScreenActivity.class));
                                 }
                             }
+                            finish();
+
                         }
                         else{
                             Log.d("sdf",task.getException().getMessage());
@@ -123,6 +122,7 @@ public class RegisterScreen extends AppCompatActivity implements View.OnClickLis
                         progressDialog.dismiss();
                     }
                 });
+
     }
     @Override
     public void onClick(View view) {

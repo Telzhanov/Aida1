@@ -1,4 +1,5 @@
 package beks.androidcourse.kz.aida.controller;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +33,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     private DatabaseReference myref;
     private FirebaseAuth mAuth;
-
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private FirebaseUser user;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("User");
@@ -52,16 +53,30 @@ public class HomeFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<User> sicksList = new ArrayList<>();
+                final ArrayList<Sicks> sicksList = new ArrayList<>();
                 for(DataSnapshot dsp : dataSnapshot.getChildren()){
-                    User sicks = dsp.getValue(User.class);
-                    sicksList.add(sicks);
-
+                    Sicks sicks = dsp.getValue(Sicks.class);
+                    if(sicks.getCategory().equals("help need")){
+                        sicksList.add(sicks);
+                    }
+                    else if(sicks.getCategory().equals("donor")){
+                        continue;
+                    }
                 }
                 adapter = new RecycleViewAdapter(sicksList,getContext());
+                adapter.setOnItemClickListener(new RecycleViewAdapter.OnItemClickListener() {
+                    @Override
+                    public void onClick(int position) {
+                        Intent intent = new Intent(getContext(),ApplicationActivity.class);
+                        /*intent.putExtra("position", position);
+                        intent.putExtra("model", sicksList.get(position));*/
+                        Sicks sicks = new Sicks(sicksList.get(position).getId());
+                        intent.putExtra(Sicks.class.getSimpleName(),sicks);
+                        startActivity(intent);
+                    }
+                });
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -71,10 +86,8 @@ public class HomeFragment extends Fragment {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                User newuser = dataSnapshot.getValue(User.class);
-                Sicks sick = new Sicks("Hi","hel","","","","","","","");
-
-
+                /*User newuser = dataSnapshot.getValue(User.class);
+                Sicks sick = new Sicks("Hi","hel","","","","","","","");*/
             }
 
             @Override

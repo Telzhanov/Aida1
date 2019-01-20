@@ -56,7 +56,7 @@ public class ApplRegistraionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("here","here");
-                Sicks sicks = new Sicks();
+                final Sicks sicks = new Sicks();
                 sicks.setId(user.getUid());
                 sicks.setName(sickName.getText().toString());
                 sicks.setSurname(sickSur.getText().toString());
@@ -73,7 +73,8 @@ public class ApplRegistraionActivity extends AppCompatActivity {
                         .setValue(sicks).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent intent = new Intent(getApplicationContext(),ApplicationScreenActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),SicksApplication.class);
+
                         startActivity(intent);
                     }
                     public void onFailure(Task<Void> task){

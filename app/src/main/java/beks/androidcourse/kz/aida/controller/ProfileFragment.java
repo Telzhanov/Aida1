@@ -36,9 +36,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewProfile);
+        //RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewProfile);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        //recyclerView.setLayoutManager(linearLayoutManager);
         ArrayList<String> mData = new ArrayList<String>();
         TextView changeButton = getView().findViewById(R.id.change);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -50,10 +50,9 @@ public class ProfileFragment extends Fragment {
         mData.add("История");
         mData.add("Подписки");
         mData.add("Мои карты");
-        ProfileRecyclerAdapter profAdapter = new ProfileRecyclerAdapter(getActivity(),mData);
-        recyclerView.setAdapter(profAdapter);
         TextView profileName = getView().findViewById(R.id.nameProfile);
         profileName.setText(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        //profileName.setText("Алия Махметова");
         Button button = getView().findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,11 +32,11 @@
         <activity android:name=".controller.CreditList" />
         <activity android:name=".controller.ApplicationActivity" />
         <activity android:name=".controller.PaymentsClass" />
-        <activity android:name=".controller.test_pay" />
         <activity android:name=".controller.ApplRegistraionActivity" />
         <activity
             android:name=".controller.SicksApplication"
             android:label="@string/title_activity_sicks_application"></activity>
+        <activity android:name=".controller.BlogView"/>
     </application>
 
 </manifest>

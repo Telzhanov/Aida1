@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/notifications"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        android:fontFamily="@font/nunito_extralight"
+        android:gravity="center"
+        android:lineSpacingExtra="18sp"
+        android:text="Блог"
+        android:textColor="#858585"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerPostList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        ></android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>

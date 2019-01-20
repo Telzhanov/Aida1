@@ -2,12 +2,14 @@ package beks.androidcourse.kz.aida.controller;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +37,9 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     private TextView forgotpassword;
     private DatabaseReference reference;
     private FirebaseDatabase database;
-    //progress dialog
+    private String safe;
     private ProgressDialog progressDialog;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -49,12 +53,12 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         signin = (TextView) findViewById(R.id.textViewlog);
         register  = (TextView) findViewById(R.id.register);
         forgotpassword = (TextView) findViewById(R.id.forgotpasswordtext);
+        progressBar = findViewById(R.id.wait);
         signin.setOnClickListener(this);
         forgotpassword.setOnClickListener(this);
         register.setOnClickListener(this);
-
     }
-    private String cat;
+
     private void userLogin(){
         String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
@@ -67,51 +71,77 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
             return;
         }
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dsp:dataSnapshot.getChildren()){
-                    User sicks = dsp.getValue(User.class);
-//                    Log.d("user",FirebaseAuth.getInstance().getUid());
-                    if(sicks.getId().equals(FirebaseAuth.getInstance().getUid())){
-                        cat = sicks.getCategory();
-                        startActivity(new Intent(getApplicationContext(),ApplicationScreenActivity.class));
-                        finish();
-                    }
-                }
-            }
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            reference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for(DataSnapshot dsp:dataSnapshot.getChildren()){
+                                        User sicks = dsp.getValue(User.class);
+                                        if(sicks.getId().equals(FirebaseAuth.getInstance().getUid())){
+                                            if(sicks.getCategory().equals("donor")) {
+                                                startActivity(new Intent(getApplicationContext(),ApplicationScreenActivity.class));
+                                                progressBar.setVisibility(ProgressBar.INVISIBLE);
+                                                finish();
+                                            }
+                                            if(sicks.getCategory().equals("help need")) {
+                                                startActivity(new Intent(getApplicationContext(),SicksApplication.class));
+                                                progressBar.setVisibility(ProgressBar.INVISIBLE);
+                                                finish();
+                                            }
+                                        }
+                                    }
+                                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("onError","onError");
-            }
-        });
-//        firebaseAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()){
-//                            if(cat.equals("donor")) {
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Log.d("onError","onError");
+                                }
+                            });
+                        }
+                        else{
+                            Log.d( "signInWithEmail:failure", task.getException().toString());
+                        }
+                    }
+                });
+
+
+//        if(firebaseAuth.getCurrentUser() != null){
+//            reference.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for(DataSnapshot dsp:dataSnapshot.getChildren()){
+//                        User sicks = dsp.getValue(User.class);
+//                        if(sicks.getId().equals(FirebaseAuth.getInstance().getUid())){
+//                            if(sicks.getCategory().equals("donor")) {
 //                                startActivity(new Intent(getApplicationContext(),ApplicationScreenActivity.class));
 //                                finish();
 //                            }
-//                            if(cat.equals("help need")) {
-//                                startActivity(new Intent(getApplicationContext(),SicksApplication.class));
+//                            if(sicks.getCategory().equals("help need")) {
+//                                startActivity(new Intent(getApplicationContext(),ApplRegistraionActivity.class));
 //                                finish();
 //                            }
 //                        }
-//                        else{
-//                            Log.d( "signInWithEmail:failure", task.getException().toString());
-//                        }
-//
 //                    }
+//                }
 //
-//                });
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                    Log.d("onError","onError");
+//                }
+//            });
+//        }
+
 
     }
+
     @Override
     public void onClick(View view) {
         if(view == signin){
+            progressBar.setVisibility(ProgressBar.VISIBLE);
             userLogin();
         }
         if(view == register){
@@ -125,7 +155,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                 return;
             }
             firebaseAuth.sendPasswordResetEmail(email)
-
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -134,21 +163,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             } else {
                                 Toast.makeText(LoginScreen.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                             }
-
-
                         }
                     });
         }
-        if(firebaseAuth.getCurrentUser() != null){
-            if(cat == "help need") {
-                Intent intent = new Intent(getApplicationContext(), ApplRegistraionActivity.class);
-                startActivity(intent);
-            }
-            if(cat == "donor"){
-                Intent intent = new Intent(getApplicationContext(),PaymentsClass.class);
-                startActivity(intent);
-            }
-            finish();
+
+
         }
-        }
-    }
+}
