@@ -27,6 +27,7 @@ public class BlogView extends AppCompatActivity {
                 v.setVisibility(View.GONE);
                 but2.setVisibility(View.GONE);
 
+
             }
         });
     }
